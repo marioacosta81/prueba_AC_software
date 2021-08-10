@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="css/optima.css">
+
+<title>Lista Mecanicos Disponibles</title>
+</head>
+<body>
+
+	<h1>Resultado de la consula:</h1>
+	<table style="width: 100%" border="2">
+		<thead>
+			<tr>
+				<td>Tipo Documento</td>
+				<td>Documento</td>
+				<td>Nombre</td>
+				
+
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<tr th:each="row, iStat : ${list}">
+				<td th:text="${row.tipoDocumento}" />
+				<td th:text="${row.documento}" />
+				<td th:text="${row.primerNombre}" />
+			</tr>
+
+
+		</tbody>
+	</table>
+
+	
+
+</body>
+</html>

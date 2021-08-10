@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="css/optima.css">
+
+<title>Guardar Mecanico</title>
+</head>
+<body>
+
+	
+
+
+	<h1>Guardar informacion</h1>
+
+	<h2>Datos del mecanico</h2>
+
+	<form id="saveMechanicalForm" th:action="@{/save}" method="post" th:object="${mechanicalDto}">
+
+
+
+		<table>
+
+
+
+			<tr>
+				
+					
+					
+					<td><label>Tipo de documento</label></td>
+				<td><select name="tipoDocumento" id="tipoDocumento">
+						<option value="CC">CC</option>
+						<option value="TI">TI</option>
+						<option value="RC">RC</option>
+				</select>
+				<td>
+					
+					
+			</tr>
+
+			<tr>
+				<td><label>Documento</label></td>
+				<td><input type="text" id="documento" name="documento"
+					placeholder="Documento" required="required"></td>
+			</tr>
+
+			<tr>
+				<td><label>Primer Nombre</label></td>
+				<td><input type="text" id="primerNombre" name="primerNombre"
+					placeholder="Primer Nombre" required="required"></td>
+			</tr>
+			
+			
+			<tr>
+				<td><label>Segundo Nombre</label></td>
+				<td><input type="text" id="segundoNombre" name="segundoNombre"
+					placeholder="Segundo Nombre" ></td>
+			</tr>
+
+			<tr>
+				<td><label>Primer Apellido</label></td>
+				<td><input type="text" id="primerApellido" name="primerApellido"
+					placeholder="Primer Apellido" required="required"></td>
+			</tr>
+
+			<tr>
+				<td><label>Segundo Apellido</label></td>
+				<td><input type="text" id="segundoApellido" name="segundoApellido"
+					placeholder="Segundo Apellido" ></td>
+			</tr>
+			
+			
+			<tr>
+				<td><label>Celular</label></td>
+				<td><input type="text" id="celular" name="celular"
+					placeholder="Celular" required="required"></td>
+			</tr>
+
+			<tr>
+				<td><label>Direccion</label></td>
+				<td><input type="text" id="direccion" name="direccion"
+					placeholder="Direccion" ></td>
+			</tr>
+
+			<tr>
+				<td><label>Email</label></td>
+				<td><input type="text" id="email" name="email"
+					placeholder="Email" required="required"></td>
+			</tr>
+			
+			
+
+
+			<tr>
+				<td><label>Estado</label></td>
+				<td><select name="estado" id="estado">
+						<option value="D">Disponible</option>
+						<option value="N">No Disponible</option>
+				</select>
+				<td>
+			</tr>
+
+		</table>
+
+
+		<button type="submit">Guardar</button>
+		<div th:if="${msg != null}" style="color: orange;" th:text="${msg}"	role='alert'></div>
+
+	</form>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+	<script>
+	
+	
+	$.validator.addMethod('IP4Checker', function(value) {
+		var ip="^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$";
+	        return value.match(ip);
+	    }, 'Invalid email ');
+	
+		$("#saveMechanicalForm").validate({
+			rules : {
+				tipoDocumento : {
+					required : true
+				},
+
+				documento : {
+					required : true,
+					digits : true
+				}
+				,
+				
+				email : {
+					required : true,
+					IP4Checker : true
+				}
+				
+				
+
+			}
+
+			
+
+		});
+	</script>
+
+</body>
+</html>
